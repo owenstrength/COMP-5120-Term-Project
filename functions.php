@@ -101,6 +101,7 @@ $result = null;
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sql'])) {
     $sql = trim($_POST['sql']);
     if (!empty($sql)) {
+        $sql = stripslashes($sql);
         $result = executeSql($conn, $sql);
     }
 }

@@ -2,6 +2,10 @@
 require_once 'db_config.php';
 require_once 'functions.php';
 
+if (isset($_POST['sql'])) {
+    $_POST['sql'] = stripslashes($_POST['sql']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +58,10 @@ require_once 'functions.php';
         button:hover {
             background: #45a049;
         }
-        button[type="reset"] {
+        button[type="button"] {
             background: #f44336;
         }
-        button[type="reset"]:hover {
+        button[type="button"]:hover {
             background: #d32f2f;
         }
         .result {
@@ -127,7 +131,7 @@ require_once 'functions.php';
                 <textarea name="sql" placeholder="Enter your SQL query here..."><?php echo isset($_POST['sql']) ? htmlspecialchars($_POST['sql']) : ''; ?></textarea>
                 <div class="buttons">
                     <button type="submit">Submit</button>
-                    <button type="reset">Clear</button>
+                    <button type="button" onclick="document.querySelector('textarea[name=sql]').value = '';">Clear</button>
                 </div>
             </form>
         </div>
